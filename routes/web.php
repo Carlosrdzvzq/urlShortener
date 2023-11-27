@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\urlController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('generate-short-link',[urlController::class, 'index']);
+Route::post('generate-short-link',[urlController::class, 'store'])->name('generate.short.link.post');
+Route::get('{code}', [urlController::class, 'shortLink'])->name('short.link');
